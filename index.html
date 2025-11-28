@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Glacier Moda - Loja de Roupas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      /* Azul glacial e cinza Dior */
+      --azul-glacial: #C8DEE1;   /* glacier blue claro [web:13] */
+      --cinza-dior: #7D7F85;     /* Dior Gray [web:14] */
+      --cinza-claro: #f5f5f7;
+      --cinza-escuro: #22252b;
+      --branco: #ffffff;
+      --preto: #000000;
+      --fonte-principal: "Segoe UI", Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+   body {
+  font-family: var(--fonte-principal);
+  color: var(--cinza-escuro);
+  line-height: 1.6;
+
+  /* fundo com imagem */
+  background: linear-gradient(180deg, var(--azul-glacial) 0%, #eef3f5 40%, var(--cinza-claro) 100%);
+  background-image: url("https://fastly.picsum.photos/id/64/1200/800.jpg?hmac=NsvaqTMptZRA_jO56CflulVXvF3Bqn01v34-q3LSpjc");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+
+    
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout geral */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.82);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.8rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cinza-escuro);
+    }
+
+    .logo-mark {
+      width: 48px;   
+      height: 48px;
+      border-radius: 18px;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, var(--azul-glacial) 50%, #7fb0bf 100%);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow:
+        0 4px 10px rgba(0,0,0,0.08),
+        inset 0 0 0 1px rgba(255,255,255,0.6);
+    }
+
+.icon-instagram {
+  width: 20px;     /* teste 20–24px */
+  height: 20px;
+  display: block;
+  border-radius: 4px; /* opcional */
+}
+
+
+
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--cinza-dior), var(--azul-glacial));
+      transition: width 0.22s ease-out;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      cursor: pointer;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .nav-cta span {
+      font-size: 0.9rem;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      border-color: rgba(0,0,0,0.16);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.14);
+    }
+
+    /* Menu mobile */
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .burger span {
+      width: 22px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--cinza-escuro);
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3.5rem 1.2rem 3rem;
+      display: grid;
+      grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.8);
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: var(--cinza-dior);
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #ffffff 0, var(--azul-glacial) 60%, var(--cinza-dior) 100%);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw + 1rem, 3.1rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      color: var(--cinza-escuro);
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, var(--cinza-dior), #4b5565);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      max-width: 480px;
+      color: #4a4f58;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(255,255,255,0.8);
+      color: #4a4f58;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      background: linear-gradient(135deg, var(--cinza-dior), #5d6470);
+      color: var(--branco);
+      padding: 0.75rem 1.3rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, filter 0.15s ease-out;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.24);
+      filter: brightness(1.02);
+    }
+
+    .btn-secondary {
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.12);
+      padding: 0.7rem 1.1rem;
+      background: rgba(255,255,255,0.85);
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: background 0.15s ease-out, transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    .btn-secondary:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+
+    .hero-meta {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      font-size: 0.78rem;
+      color: #4b515c;
+    }
+
+    .hero-meta div strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--cinza-escuro);
+      margin-bottom: 0.15rem;
+    }
+
+    /* Hero imagem / destaque */
+    .hero-visual {
+      position: relative;
+    }
+
+    .card-main {
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.9), rgba(255,255,255,0.98));
+      border-radius: 24px;
+      padding: 1.8rem 1.5rem;
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.2),
+        0 0 0 1px rgba(255,255,255,0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.4rem;
+    }
+
+    .card-main-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cinza-dior);
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(200, 222, 225, 0.25);
+      color: #4f5a65;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .card-main-body {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 1.4rem;
+      align-items: center;
+    }
+
+    .figure {
+      position: relative;
+      height: 220px;
+      border-radius: 24px;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 10%, #ffffff, #e4eef1);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .figure-inner {
+      width: 70%;
+      height: 100%;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #2d3b49, #151b23);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    }
+
+    .figure-inner::before {
+      content: "";
+      position: absolute;
+      inset: 12% 18%;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 10% 0, rgba(255,255,255,0.25), transparent 60%),
+        linear-gradient(180deg, #2b3a47 0, #151b23 100%);
+      opacity: 0.9;
+    }
+
+    .figure-person {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.45), transparent 55%),
+        linear-gradient(180deg, #d0d5dd 0, #697180 40%, #252b35 75%, #141821 100%);
+      mask-image: radial-gradient(circle at 50% -40%, transparent 45%, #000 70%);
+    }
+
+    .figure-circle {
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.35);
+      top: -30px;
+      right: -20px;
+      opacity: 0.8;
+    }
+
+    .figure-circle::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: inherit;
+      border: 1px dashed rgba(255,255,255,0.3);
+    }
+
+    .figure-label {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(6px);
+    }
+
+    .card-main-info {
+      font-size: 0.86rem;
+      color: #4a525d;
+    }
+
+    .card-main-info h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.6rem;
+      color: #2b313b;
+    }
+
+    .card-main-info p {
+      margin-bottom: 0.9rem;
+    }
+
+    .mini-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .mini-list li {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.55rem;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.02);
+    }
+
+    .mini-list strong {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.1rem;
+      color: var(--cinza-dior);
+    }
+
+    .card-main-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+      font-size: 0.75rem;
+      color: #6b717b;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #ffffff 0, #13c39b 40%, #067c5f 100%);
+      box-shadow: 0 0 0 4px rgba(19,195,155,0.16);
+    }
+
+    .price-pill {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.03);
+    }
+
+    .shadow-card {
+      position: absolute;
+      right: -6px;
+      bottom: -16px;
+      width: 160px;
+      padding: 0.9rem 0.9rem;
+      border-radius: 16px;
+      background: rgba(20,24,31,0.96);
+      color: #e7ecf5;
+      font-size: 0.74rem;
+      box-shadow:
+        0 14px 34px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    .shadow-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .shadow-pill {
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .shadow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #ffffff 0, #f5cc66 35%, #d68d21 80%);
+    }
+
+    .shadow-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 0.6rem;
+      margin-top: 0.4rem;
+    }
+
+    .shadow-grid span {
+      display: block;
+    }
+
+    .shadow-label {
+      font-size: 0.65rem;
+      color: #a0a7b7;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .shadow-value {
+      font-size: 0.8rem;
+    }
+
+    /* Seções principais */
+    main {
+      background: transparent;
+    }
+
+    section {
+      padding: 2.5rem 1.2rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.4rem;
+      color: var(--cinza-escuro);
+    }
+
+    .section-header p {
+      font-size: 0.95rem;
+      color: #4a4f58;
+      max-width: 520px;
+    }
+
+    /* Produtos */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .product-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
+    }
+
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.14);
+      border-color: rgba(0,0,0,0.06);
+    }
+
+.product-image {
+    height: 190px;
+    background: none;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+   .product-image::after {
+    content: "";
+    position: absolute;
+    inset: 12% 18%;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    opacity: 0.9;
+   }
+
+    .product-chip {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.7rem;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.6);
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+.product-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+    .product-body {
+      padding: 0.9rem 1rem 1rem;
+      font-size: 0.85rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .product-title {
+      font-weight: 600;
+      color: #242831;
+    }
+
+    .product-meta {
+      font-size: 0.78rem;
+      color: #666c77;
+    }
+
+    .product-footer {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.5rem;
+    }
+
+    .product-price {
+      font-weight: 600;
+      color: var(--cinza-dior);
+    }
+
+    .product-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;   /* era maior */
+  font-size: 0.7rem;         /* levemente menor */
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  background: rgba(0,0,0,0.05);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+
+    /* Sobre */
+    .about-layout {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 0.96rem;
+      color: #4a4f58;
+      margin-bottom: 1rem;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.9rem;
+      font-size: 0.86rem;
+    }
+
+    .about-feature {
+      padding: 0.8rem 0.9rem;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+    }
+
+    .about-feature h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+      color: var(--cinza-escuro);
+    }
+
+    .about-feature p {
+      font-size: 0.82rem;
+      color: #5b6270;
+    }
+
+    .about-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.6rem;
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #3e434f;
+    }
+
+    .about-stats span {
+      display: block;
+    }
+
+    .about-stats strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--cinza-escuro);
+    }
+
+    .about-card {
+      border-radius: 20px;
+      padding: 1.4rem 1.2rem;
+      background: radial-gradient(circle at 0 0, #ffffff 0, #e7edf0 40%, #d2dde0 100%);
+      box-shadow:
+        0 14px 32px rgba(0,0,0,0.22),
+        0 0 0 1px rgba(255,255,255,0.8);
+      font-size: 0.83rem;
+      color: #30353e;
+    }
+
+    .about-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.7rem;
+    }
+
+    .about-card-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #ffffff 0, var(--cinza-dior) 70%);
+      box-shadow: 0 0 0 5px rgba(125,127,133,0.25);
+    }
+
+    .about-card h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #272b34;
+    }
+
+    .about-card-list {
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+
+    .about-card-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .badge-soft {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Contato */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    form {
+      background: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.14);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .form-row {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      margin-bottom: 0.9rem;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.3rem;
+      color: #555c67;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 0.55rem 0.85rem;
+      font-size: 0.86rem;
+      font-family: inherit;
+      outline: none;
+      background: rgba(248,250,252,0.9);
+      transition: border-color 0.12s ease-out, box-shadow 0.12s ease-out, background 0.12s ease-out;
+    }
+
+    textarea {
+      border-radius: 14px;
+      min-height: 110px;
+      resize: vertical;
+      padding-top: 0.65rem;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--cinza-dior);
+      background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(125,127,133,0.2);
+    }
+
+    .form-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      margin-top: 0.4rem;
+    }
+
+    .form-helper {
+      font-size: 0.78rem;
+      color: #4f5662;
+    }
+
+    .form-status {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: #155724;
+      background: rgba(212,237,218,0.9);
+      border-radius: 10px;
+      padding: 0.4rem 0.6rem;
+      display: none;
+    }
+
+    .form-status.error {
+      color: #721c24;
+      background: rgba(248,215,218,0.9);
+    }
+
+    .contact-info {
+      font-size: 0.9rem;
+      color: #4a4f58;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 0.5rem;
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .contact-list li {
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.9);
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #5b6270;
+    }
+
+    .contact-value {
+      font-size: 0.88rem;
+      color: #2e333c;
+    }
+
+    /* Rodapé */
+    footer {
+      border-top: 1px solid rgba(0,0,0,0.04);
+      background: rgba(255,255,255,0.92);
+      margin-top: 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.4rem 1.2rem 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #656b78;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .footer-links a {
+      text-decoration: underline;
+      text-decoration-color: rgba(0,0,0,0.22);
+      text-underline-offset: 3px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: minmax(0,1fr);
+        padding-top: 2.4rem;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .card-main-body {
+        grid-template-columns: 1fr;
+      }
+
+      .about-layout,
+      .contact-layout {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .shadow-card {
+        position: absolute;
+        right: 8px;
+        bottom: 8px;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .products-grid {
+        grid-template-columns: repeat(3, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        position: fixed;
+        inset: 56px 0 auto 0;
+        background: rgba(255,255,255,0.98);
+        flex-direction: column;
+        padding: 0.8rem 1.2rem 1rem;
+        gap: 0.9rem;
+        transform: translateY(-120%);
+        opacity: 0;
+        pointer-events: none;
+        box-shadow: 0 9px 20px rgba(0,0,0,0.12);
+      }
+
+      .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      section {
+        padding-inline: 1rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .products-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .section-header {
+        align-items: flex-start;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .about-features {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+ <div class="nav-container">
+  <a href="#home" class="logo">
+    <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/02d86e39-98f7-4501-8cf9-601e2bc23040.png"
+         alt="Glacier Moda"
+         class="logo-mark">
+    <span>Glacier Moda</span>
+  </a>
+
+<nav class="nav-links" id="nav-links">
+  <a href="#home">Início</a>
+  <a href="#sobre">Sobre</a>
+  <a href="#produtos">Coleções</a>
+  <a href="#contato">Contato</a>
+
+  <a href="https://instagram.com/valak_765" target="_blank" aria-label="Instagram">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGTOZHQ1ydL_Vp6rnv2QcapHcPRFMj_Gu9fg&s"
+         alt="Instagram"
+         class="icon-instagram">
+  </a>
+</nav>
+
+
+
+
+
+      <button class="nav-cta" id="nav-cta" type="button">
+        <span>Agendar visita</span>
+        <span>➜</span>
+      </button>
+
+      <button class="burger" id="burger" type="button" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home">
+      <div class="hero">
+        <div class="hero-text">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Moda masculina e feminina para todas as idades
+          </div>
+          <h1 class="hero-title">
+            Elegância glacial para o dia a dia<span>.</span> <span>Estilo atemporal para cada geração.</span>
+          </h1>
+          <p class="hero-subtitle">
+            A Glacier Moda une o azul leve dos glaciares ao cinza sofisticado Dior em peças casuais e sociais para
+            crianças, jovens, adultos e melhor idade – tudo em um único lugar.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">Moda feminina</span>
+            <span class="tag">Moda masculina</span>
+            <span class="tag">Infantil & teen</span>
+            <span class="tag">Plus size</span>
+            <span class="tag">Linha social</span>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn-primary" type="button" id="btn-ver-colecao">
+              Ver coleções
+              <span>⟶</span>
+            </button>
+            <button class="btn-secondary" type="button" id="btn-falar-consultor">
+              Falar com um consultor
+              <span>✉</span>
+            </button>
+          </div>
+
+          <div class="hero-meta">
+            <div>
+              <strong>Entrega para todo o Brasil</strong>
+              Frete inteligente com rastreio em tempo real.
+            </div>
+            <div>
+              <strong>Troca facilitada</strong>
+              Primeira troca grátis em até 30 dias.
+            </div>
+            <div>
+              <strong>Pagamentos seguros</strong>
+              Até 10x sem juros nos principais cartões.
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="card-main">
+            <div class="card-main-header">
+              <span class="card-main-title">Preview da coleção</span>
+              <span class="pill">Outono · Inverno</span>
+            </div>
+            <div class="card-main-body">
+              <div class="figure">
+                <div class="figure-inner">
+                  <div class="figure-person"></div>
+                  <div class="figure-circle"></div>
+                  <div class="figure-label">Edição cápsula · Glacier</div>
+                </div>
+              </div>
+              <div class="card-main-info">
+                <h3>Casual sofisticado que combina com você</h3>
+                <p>
+                  Mistura entre o conforto do athleisure e o acabamento impecável da alfaiataria, pensada para homens e
+                  mulheres que querem estar bem vestidos em qualquer momento do dia.
+                </p>
+                <ul class="mini-list">
+                  <li>
+                    <strong>Multifaixas etárias</strong>
+                    Looks coordenados para crianças, adultos e melhor idade.
+                  </li>
+                  <li>
+                    <strong>Paleta autoral</strong>
+                    Tons de azul glacial e cinza Dior em equilíbrio perfeito.
+                  </li>
+                  <li>
+                    <strong>Tecidos premium</strong>
+                    Malhas respiráveis, linho, sarja e alfaiataria confortável.
+                  </li>
+                  <li>
+                    <strong>Detalhes inteligentes</strong>
+                    Modelagens pensadas para uso urbano e viagens.
+                  </li>
+                </ul>
+                <div class="card-main-footer">
+                  <div style="display:flex;align-items:center;gap:0.4rem;">
+                    <span class="status-dot"></span>
+                    <span>Consultoria de estilo on-line ativa agora</span>
+                  </div>
+                  <div class="price-pill">Peças a partir de R$ 99,90</div>
+                </div>
+              </div>
+            </div>
+            <div class="shadow-card">
+              <div class="shadow-card-header">
+                <span class="shadow-pill">Looks favoritos</span>
+                <span class="shadow-dot"></span>
+              </div>
+              <div class="shadow-grid">
+                <div>
+                  <span class="shadow-label">Feminino</span>
+                  <span class="shadow-value">Blazer glacial &amp; mom jeans</span>
+                </div>
+                <div>
+                  <span class="shadow-label">Masculino</span>
+                  <span class="shadow-value">Camisa Dior &amp; chino slim</span>
+                </div>
+                <div>
+                  <span class="shadow-label">Infantil</span>
+                  <span class="shadow-value">Moletom soft &amp; jogger</span>
+                </div>
+                <div>
+                  <span class="shadow-label">Ocasião</span>
+                  <span class="shadow-value">Do casual ao social</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- hero-visual -->
+      </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section id="produtos">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Coleções em destaque</h2>
+          <p>
+            Selecione entre linhas femininas, masculinas e infantis com curadoria exclusiva para diversas faixas
+            etárias, sempre dentro da paleta azul glacial e cinza Dior, para visuais harmônicos em família.
+          </p>
+        </div>
+<div class="products-grid">
+      <!-- Feminino Adulto -->
+<article class="product-card">
+  <div class="product-image">
+    <span class="product-chip">Feminino</span>
+    <img src="https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/28123773-8bab-5886-9cea-317b66e9513d/449c7537-0b7f-5f01-b87c-fd009b955c58.jpg" alt="Tailleur Azul Glacial">
+  </div>
+  <div class="product-body">
+    <div class="product-title">Tailleur Azul Glacial</div>
+    <div class="product-meta">
+      Conjunto de blazer estruturado e calça reta com caimento fluido.
+    </div>
+    <div class="product-footer">
+      <span class="product-price">R$ 429,90</span>
+
+      <a class="product-btn"
+         href="https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/28123773-8bab-5886-9cea-317b66e9513d/449c7537-0b7f-5f01-b87c-fd009b955c58.jpg"
+         target="_blank"
+         rel="noopener noreferrer">
+        Ver detalhes
+        <span>＋</span>
+      </a>
+  <a class="product-btn"
+     href="https://wa.me/556299226038?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20o%20Tailleur%20Azul%20Glacial%2C%20tamanho%20____"
+     target="_blank"
+     rel="noopener noreferrer">
+    Comprar
+    </a>
+    </div>
+  </div>
+</article>
+
+
+
+          <!-- Masculino Adulto -->
+          <article class="product-card">
+            <div class="product-image">
+              <span class="product-chip">Masculino</span>
+                <img src="https://58532.cdn.simplo7.net/static/58532/sku/masculino-camisa-social-masculina-cinza-tradicional-manga-longa-up-p-1680706961458.jpg" alt="Camisa Dior Comfort">  
+            </div> 
+            <div class="product-body">
+              <div class="product-title">Camisa Dior Comfort</div>
+              <div class="product-meta">Camisa em tricoline cinza Dior com stretch e gola moderna.</div>
+              <div class="product-footer">
+                  <span class="product-price">R$ 239,90</span>
+
+      <a class="product-btn"
+         href="https://58532.cdn.simplo7.net/static/58532/sku/masculino-camisa-social-masculina-cinza-tradicional-manga-longa-up-p-1680706961458.jpg"
+         target="_blank"
+         rel="noopener noreferrer">
+                Ver detalhes
+                  <span>＋</span>
+                 </a>
+            <a class="product-btn"
+     href="https://wa.me/556299226038?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20a%20Camisa%20Dior%20Comfort%2C%20tamanho%20____"
+     target="_blank"
+     rel="noopener noreferrer">
+              Comprar
+              </a>      
+              </div>
+            </div>
+          </article>
+
+          <!-- Juvenil -->
+          <article class="product-card">
+            <div class="product-image">
+              <span class="product-chip">Teen</span>
+              <img src="https://cdn.lookastic.com/looks/bomber-jacket-turtleneck-cargo-pants-large-104599.jpg" alt="Conjuto College Glacier">
+            </div>
+            <div class="product-body">
+              <div class="product-title">Conjunto College Glacier</div>
+              <div class="product-meta">Jaqueta bomber leve com calça jogger em moletom premium.</div>
+              <div class="product-footer">
+                 <span class="product-price">R$ 189,90</span>
+
+      <a class="product-btn"
+         href="https://cdn.lookastic.com/looks/bomber-jacket-turtleneck-cargo-pants-large-104599.jpg"
+         target="_blank"
+         rel="noopener noreferrer">
+                Ver detalhes
+                  <span>＋</span>
+                </a>
+                  <a class="product-btn"
+     href="https://wa.me/556299226038?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20o%20Conjunto%20College%20Glacier%2C%20tamanho%20____"
+     target="_blank"
+     rel="noopener noreferrer">
+              Comprar
+              </a> 
+              </div>
+            </div>
+          </article>
+
+          <!-- Infantil -->
+          <article class="product-card">
+            <div class="product-image">
+              <span class="product-chip">Kids</span>
+              <img src="https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e6c41577ace67aa73b548ea62a7b813b41823fe0f28674b1e9260d4f688153ac258462f589c1ec8835aa8d054d862f787" alt="Kit Família Glacial">
+            </div>
+            <div class="product-body">
+              <div class="product-title">Kit Família Glacial</div>
+              <div class="product-meta">Camisetas coordenadas para pais e filhos com modelagem confortável.</div>
+              <div class="product-footer">
+                 <span class="product-price">R$ 159,90</span>
+
+      <a class="product-btn"
+         href="https://st.perplexity.ai/estatic/0b226c450798410ac541646c86ec31afd840e5beab817a5d84fa821e7db61981ec84c3b4a3f072a7a2e1899c9fb06c6e6c41577ace67aa73b548ea62a7b813b41823fe0f28674b1e9260d4f688153ac258462f589c1ec8835aa8d054d862f787"
+         target="_blank"
+         rel="noopener noreferrer">
+                Ver detalhes
+                  <span>＋</span>
+                  </a>
+                  <a class="product-btn"
+     href="https://wa.me/556299226038?text=Ol%C3%A1%2C%20gostaria%20de%20comprar%20o%20Kit%20Fam%C3%ADlia%20Glacial%2C%20tamanho%20____"
+     target="_blank"
+     rel="noopener noreferrer">
+              Comprar 
+              </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+       
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Sobre a Glacier Moda</h2>
+          <p>
+            Nasceu do desejo de unir o frescor dos tons glaciais à elegância sóbria do cinza Dior, resultando em peças
+            versáteis, confortáveis e sofisticadas para todas as faixas etárias, em um ambiente acolhedor e inclusivo.
+          </p>
+        </div>
+
+        <div class="about-layout">
+          <div class="about-text">
+            <p>
+              Da primeira entrevista de estágio ao encontro de família, da festa infantil ao jantar corporativo,
+              a Glacier Moda busca traduzir histórias em looks completos, com curadoria atenta a caimento, tecidos e
+              combinações de cores atemporais.
+            </p>
+            <p>
+              A equipe de consultores de estilo acompanha de perto as tendências internacionais, sem abrir mão do
+              conforto e da usabilidade no dia a dia, garantindo que cada peça funcione sozinha e em combinação com o
+              resto do guarda-roupa.
+            </p>
+
+            <div class="about-features">
+              <div class="about-feature">
+                <h3>Moda para todas as idades</h3>
+                <p>
+                  Linhas dedicadas para infantil, teen, adulto e melhor idade, com grades completas e opções plus size.
+                </p>
+              </div>
+              <div class="about-feature">
+                <h3>Curadoria de materiais</h3>
+                <p>
+                  Seleção de tecidos duráveis, respiráveis e fáceis de cuidar, ideal para rotinas cheias e dinâmicas.
+                </p>
+              </div>
+              <div class="about-feature">
+                <h3>Compras físicas e on-line</h3>
+                <p>
+                  Experiência integrada: visite o showroom ou finalize tudo on-line com atendimento humanizado.
+                </p>
+              </div>
+              <div class="about-feature">
+                <h3>Estilo consciente</h3>
+                <p>
+                  Peças que priorizam versatilidade e combinação entre si, reduzindo o consumo por impulso.
+                </p>
+              </div>
+            </div>
+
+            <div class="about-stats">
+              <div>
+                <span>Clientes atendidos</span>
+                <strong>+8.000</strong>
+              </div>
+              <div>
+                <span>Looks montados por mês</span>
+                <strong>+1.200</strong>
+              </div>
+              <div>
+                <span>Índice de satisfação</span>
+                <strong>4,9/5</strong>
+              </div>
+            </div>
+          </div>
+
+          <aside class="about-card">
+            <div class="about-card-header">
+              <h3>Experiência na loja</h3>
+              <div class="about-card-dot"></div>
+            </div>
+            <p>
+              Cada visita à Glacier Moda é pensada como uma jornada guiada: você é recebido por consultores que
+              entendem sua rotina, preferências e objetivos, sugerindo combinações completas e funcionais.
+            </p>
+            <ul class="about-card-list">
+              <li>
+                <span class="badge-soft">Consultoria rápida · 20 min</span>
+                <span>Seleção express de peças para o dia a dia.</span>
+              </li>
+              <li>
+                <span class="badge-soft">Atendimento família</span>
+                <span>Montagem de looks coordenados para todos.</span>
+              </li>
+              <li>
+                <span class="badge-soft">Agenda corporativa</span>
+                <span>Orientação para dress code de empresas.</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato">
+      <div class="section-inner">
+        <div class="section-header">
+          <h2>Contato e atendimento</h2>
+          <p>
+            Fale com a equipe para tirar dúvidas, solicitar sugestões de looks ou agendar uma experiência completa de
+            compra, presencial ou on-line.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required />
+              </div>
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="voce@exemplo.com" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telefone">Telefone / WhatsApp</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" />
+              </div>
+              <div class="form-group">
+                <label for="faixa-etaria">Faixa etária principal</label>
+                <select id="faixa-etaria" name="faixa-etaria">
+                  <option value="">Selecione</option>
+                  <option value="infantil">Infantil (0-12)</option>
+                  <option value="teen">Teen (13-19)</option>
+                  <option value="adulto">Adulto (20-59)</option>
+                  <option value="melhor-idade">Melhor idade (60+)</option>
+                  <option value="familia">Família inteira</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="assunto">Assunto</label>
+              <select id="assunto" name="assunto">
+                <option value="duvida">Dúvidas gerais</option>
+                <option value="consultoria">Consultoria de estilo</option>
+                <option value="agenda-visita">Agendar visita presencial</option>
+                <option value="parceria">Parcerias e atacado</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Conte como podemos ajudar"></textarea>
+            </div>
+
+            <div class="form-footer">
+              <button class="btn-primary" type="submit">
+                Enviar mensagem
+                <span>✉</span>
+              </button>
+              <p class="form-helper">
+                Ao enviar, você concorda em ser contatado por e-mail ou WhatsApp para continuidade do atendimento.
+              </p>
+            </div>
+
+            <div class="form-status" id="form-status"></div>
+          </form>
+
+          <div class="contact-info">
+            <p>
+              A Glacier Moda oferece atendimento híbrido: on-line, via WhatsApp ou videochamada, e presencial no
+              showroom, para que você escolha a forma mais confortável de renovar o guarda-roupa.
+            </p>
+            <ul class="contact-list">
+              <li>
+                <div class="contact-icon">☎</div>
+                <div>
+                  <div class="contact-label">Telefone / WhatsApp</div>
+                  <div class="contact-value">(11) 90000-0000</div>
+                </div>
+              </li>
+              <li>
+                <div class="contact-icon">@</div>
+                <div>
+                  <div class="contact-label">E-mail</div>
+                  <div class="contact-value">contato@glaciermoda.com.br</div>
+                </div>
+              </li>
+              <li>
+                <div class="contact-icon">⌂</div>
+                <div>
+                  <div class="contact-label">Showroom</div>
+                  <div class="contact-value">Av. T63, 123 · Goiânia · GO</div>
+                </div>
+              </li>
+              <li>
+                <div class="contact-icon">⏱</div>
+                <div>
+                  <div class="contact-label">Horário de atendimento</div>
+                  <div class="contact-value">Seg a sex · 9h às 19h · Sábado · 10h às 16h</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div> <!-- contact-layout -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Glacier Moda · Todos os direitos reservados.</div>
+      <div class="footer-links">
+        <a href="#home">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#produtos">Coleções</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Atualiza ano automaticamente
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll suave para seções
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    document.getElementById("btn-ver-colecao").addEventListener("click", function () {
+      scrollToSection("produtos");
+    });
+
+    document.getElementById("btn-falar-consultor").addEventListener("click", function () {
+      scrollToSection("contato");
+    });
+
+    document.getElementById("nav-cta").addEventListener("click", function () {
+      scrollToSection("contato");
+    });
+
+    // Menu mobile
+    const burger = document.getElementById("burger");
+    const navLinks = document.getElementById("nav-links");
+
+    burger.addEventListener("click", function () {
+      navLinks.classList.toggle("open");
+    });
+
+    navLinks.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+      });
+    });
+
+    // Formulário de contato "funcional" no front-end
+    const form = document.getElementById("contact-form");
+    const statusBox = document.getElementById("form-status");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const data = {
+        nome: form.nome.value.trim(),
+        email: form.email.value.trim(),
+        telefone: form.telefone.value.trim(),
+        faixa: form["faixa-etaria"].value,
+        assunto: form.assunto.value,
+        mensagem: form.mensagem.value.trim(),
+      };
+
+      if (!data.nome || !data.email) {
+        statusBox.textContent = "Por favor, preencha pelo menos nome e e-mail para continuar.";
+        statusBox.classList.add("error");
+        statusBox.style.display = "block";
+        return;
+      }
+
+      statusBox.classList.remove("error");
+      statusBox.textContent = "Enviando sua mensagem...";
+      statusBox.style.display = "block";
+
+      // Simulação de envio (poderia ser substituído por um fetch para backend)
+      setTimeout(function () {
+        statusBox.textContent = "Mensagem enviada com sucesso! Em breve entraremos em contato.";
+        form.reset();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
